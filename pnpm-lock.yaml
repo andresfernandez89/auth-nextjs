@@ -16,12 +16,18 @@ importers:
       "@radix-ui/react-label":
         specifier: ^2.0.2
         version: 2.0.2(@types/react-dom@18.3.0)(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      bcryptjs:
+        specifier: ^2.4.3
+        version: 2.4.3
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      jose:
+        specifier: ^5.3.0
+        version: 5.3.0
       lucide-react:
         specifier: ^0.378.0
         version: 0.378.0(react@18.3.1)
@@ -47,6 +53,9 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      "@types/bcryptjs":
+        specifier: ^2.4.6
+        version: 2.4.6
       "@types/node":
         specifier: ^20
         version: 20.12.12
@@ -434,6 +443,12 @@ packages:
         integrity: sha512-KGYxvIOXcceOAbEk4bi/dVLEK9z8sZ0uBB3Il5b1rhfClSpcX0yfRO0KmTkqR2cnQDymwLB+25ZyMzICg/cm/A==,
       }
 
+  "@types/bcryptjs@2.4.6":
+    resolution:
+      {
+        integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==,
+      }
+
   "@types/json5@0.0.29":
     resolution:
       {
@@ -695,6 +710,12 @@ packages:
     resolution:
       {
         integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==,
+      }
+
+  bcryptjs@2.4.3:
+    resolution:
+      {
+        integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==,
       }
 
   binary-extensions@2.3.0:
@@ -1714,6 +1735,12 @@ packages:
         integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==,
       }
     hasBin: true
+
+  jose@5.3.0:
+    resolution:
+      {
+        integrity: sha512-IChe9AtAE79ru084ow8jzkN2lNrG3Ntfiv65Cvj9uOCE2m5LNsdHG+9EbxWxAoWRF9TgDOqLN5jm08++owDVRg==,
+      }
 
   js-tokens@4.0.0:
     resolution:
@@ -3036,6 +3063,8 @@ snapshots:
       "@swc/counter": 0.1.3
       tslib: 2.6.2
 
+  "@types/bcryptjs@2.4.6": {}
+
   "@types/json5@0.0.29": {}
 
   "@types/node@20.12.12":
@@ -3220,6 +3249,8 @@ snapshots:
       dequal: 2.0.3
 
   balanced-match@1.0.2: {}
+
+  bcryptjs@2.4.3: {}
 
   binary-extensions@2.3.0: {}
 
@@ -3963,6 +3994,8 @@ snapshots:
       "@pkgjs/parseargs": 0.11.0
 
   jiti@1.21.0: {}
+
+  jose@5.3.0: {}
 
   js-tokens@4.0.0: {}
 
