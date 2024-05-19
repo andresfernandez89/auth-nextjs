@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const SignupFormSchema = z.object({
+export const SignUpFormSchema = z.object({
   name: z
     .string()
     .min(3, { message: "Name must be at leaste 3 characters long." })
@@ -12,18 +12,37 @@ export const SignupFormSchema = z.object({
     .trim(),
 });
 
-export type FormInputs = {
+export type SignUpInputs = {
   name: string;
   email: string;
   password: string;
 };
 
-export type Errors = {
+export type SignUpErrors = {
   name?: string[];
   email?: string[];
   password?: string[];
 };
 
-export type SignupResult = {
-  errors?: Errors;
+export type SignUpResult = {
+  errors?: SignUpErrors;
+};
+
+export const SignInFormSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email." }).trim(),
+  password: z.string().min(6, { message: "Invalid email." }).trim(),
+});
+
+export type SignInInputs = {
+  email: string;
+  password: string;
+};
+
+export type SignInErrors = {
+  email?: string[];
+  password?: string[];
+};
+
+export type SignInResult = {
+  errors?: SignInErrors;
 };
