@@ -68,4 +68,5 @@ export async function signin(formData: SignInInputs): Promise<SignInResult> {
 
 export async function logout() {
   cookies().set("session", "", { expires: new Date(0) });
+  redirect("/signin");
 }
