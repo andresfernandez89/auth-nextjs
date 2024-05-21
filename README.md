@@ -1,10 +1,14 @@
-#AUTHENTICATION - NEXT JS
+## AUTHENTICATION - NEXT JS
 
 Website with user authentication, registration, login, and logout. Data validation is handled using zod and react-hook-form.
 
+## Demo
+
+https://auth-nextjs-git-main-andresfernandez89s-projects.vercel.app/
+
 ## Tech Stack
 
-Next JS, TypeScript, Tailwind, Shadcn, Prisma, bcryptjs, jose, zod, react-hook-form .
+next js, typescript, tailwind, shadcn, prisma, bcryptjs, jose, zod, react-hook-form .
 
 ## Run Locally
 
