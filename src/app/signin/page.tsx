@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SignInFormSchema, SignInInputs } from "@/lib/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function SignIn() {
@@ -53,6 +54,15 @@ export default function SignIn() {
         <div className="mt-8 text-right">
           <Button type="submit">Sign in</Button>
         </div>
+        <Link href={"/signup"}>
+          <p className="mt-8 text-center text-sm font-light">
+            {`Don't have an account yet?`}
+            <span className="ml-2 font-semibold underline underline-offset-2">
+              {" "}
+              Sign Up
+            </span>
+          </p>
+        </Link>
       </form>
     </main>
   );
