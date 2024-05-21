@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#AUTHENTICATION - NEXT JS
 
-## Getting Started
+Website with user authentication, registration, login, and logout. Data validation is handled using zod and react-hook-form.
 
-First, run the development server:
+## Tech Stack
+
+Next JS, TypeScript, Tailwind, Shadcn, Prisma, bcryptjs, jose, zod, react-hook-form .
+
+## Run Locally
+
+Clone the project
+
+````bash
+  git clone https://github.com/andresfernandez89/auth-nextjs.git
+
+Go to the project directory
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  cd auth-nextjs
+````
+
+Install dependencies
+
+```bash
+  npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Environment Variables
 
-## Learn More
+To run this project, you will need to add the following environment variables to your **`.env`** file
 
-To learn more about Next.js, take a look at the following resources:
+`ROOT_URL=http://localhost:3000`
+`POSTGRES_PRISMA_URL=`
+`POSTGRES_URL_NON_POOLING=`
+`JWT_SECRET=secretKeyNextJs`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔗 Links
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andresfernandez89/)
