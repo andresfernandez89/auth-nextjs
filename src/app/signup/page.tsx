@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SignUpFormSchema, SignUpInputs } from "@/lib/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function SignUpForm() {
@@ -20,8 +21,9 @@ export default function SignUpForm() {
   const onSubmit: SubmitHandler<SignUpInputs> = (data) => {
     try {
       signup(data);
+      return;
     } catch (error) {
-      throw new Error("Errores");
+      throw new Error("Error");
     }
   };
 
@@ -60,6 +62,15 @@ export default function SignUpForm() {
         <div className="mt-8 text-right">
           <Button type="submit">Sign up</Button>
         </div>
+        <Link href={"/signin"}>
+          <p className="mt-8 text-center text-sm font-light">
+            {`Already have an account?`}
+            <span className="ml-2 font-semibold underline underline-offset-2">
+              {" "}
+              Sign In
+            </span>
+          </p>
+        </Link>
       </form>
     </main>
   );
