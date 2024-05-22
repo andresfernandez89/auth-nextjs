@@ -17,16 +17,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "dark min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-        )}
-      >
-        {children}
-      </body>
-    </html>
-  );
+  try {
+    if (process.env.ROOT_URL) {
+      return (
+        <html lang="en" suppressHydrationWarning>
+          <body
+            className={cn(
+              "dark min-h-screen bg-background font-sans antialiased",
+              fontSans.variable,
+            )}
+          >
+            {children}
+          </body>
+        </html>
+      );
+    }
+  } catch (error) {
+    throw new Error("Some env variables not set");
+  }
 }
