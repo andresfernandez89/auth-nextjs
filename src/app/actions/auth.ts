@@ -7,6 +7,7 @@ import {
   SignUpInputs,
   SignUpResult,
 } from "@/lib/definitions";
+import { setSession } from "@/lib/lib";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -28,10 +29,16 @@ export async function signup(formData: SignUpInputs): Promise<SignUpResult> {
     body: JSON.stringify(validatedFields.data),
   });
 
-  if (res.ok) {
-    redirect(`${process.env.ROOT_URL}/dashboard`);
+  const json = await res.json();
+  if (json.error === "User already exist") {
+    return { errors: { email: ["User already exist"] } };
   }
-  return {};
+  await setSession(json.token);
+  if (res.ok) {
+    redirect(`/dashboard`);
+  } else {
+    return json.error;
+  }
 }
 
 export async function signin(formData: SignInInputs): Promise<SignInResult> {
@@ -50,14 +57,15 @@ export async function signin(formData: SignInInputs): Promise<SignInResult> {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(validatedFields.data),
   });
+
   const json = await res.json();
-  cookies().set("session", json.token, {
-    httpOnly: true,
-    secure: true,
-    expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
-    sameSite: "strict",
-    path: "/",
-  });
+
+  if (json.error === "Invalid email") {
+    return { errors: { email: ["Invalid email"] } };
+  } else if (json.error === "Invalid password") {
+    return { errors: { password: ["Invalid password"] } };
+  }
+  await setSession(json.token);
 
   if (res.ok) {
     redirect(`/dashboard`);

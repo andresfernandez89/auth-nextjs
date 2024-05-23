@@ -1,12 +1,18 @@
 "use client";
 import { signin } from "@/app/actions/auth";
+import ErrorInput from "@/components/errorInput";
 import { Button } from "@/components/ui/button";
 import { CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SignInFormSchema, SignInInputs } from "@/lib/definitions";
+import {
+  SignInFormSchema,
+  SignInInputs,
+  SignInResult,
+} from "@/lib/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function SignIn() {
@@ -17,12 +23,40 @@ export default function SignIn() {
   } = useForm<SignInInputs>({
     resolver: zodResolver(SignInFormSchema),
   });
+  const [invalidEmail, setInvalidEmail] = useState<SignInResult>({
+    errors: { email: undefined },
+  });
+  const [invalidPassword, setInvalidPassword] = useState<SignInResult>({
+    errors: { password: undefined },
+  });
 
-  const onSubmit: SubmitHandler<SignInInputs> = (data) => {
+  const onSubmit: SubmitHandler<SignInInputs> = async (data) => {
     try {
-      signin(data);
+      const dataUser = await signin(data);
+
+      if (
+        dataUser?.errors?.email &&
+        dataUser?.errors?.email[0] == "Invalid email"
+      ) {
+        setInvalidEmail({
+          errors: { email: dataUser?.errors?.email },
+        });
+      } else {
+        setInvalidEmail({ errors: undefined });
+      }
+
+      if (
+        dataUser?.errors?.password &&
+        dataUser?.errors?.password[0] == "Invalid password"
+      ) {
+        setInvalidPassword({
+          errors: { password: dataUser?.errors?.password },
+        });
+      } else {
+        setInvalidPassword({ errors: undefined });
+      }
     } catch (error) {
-      throw new Error("Errores");
+      throw new Error("message");
     }
   };
 
@@ -38,17 +72,21 @@ export default function SignIn() {
         <div className="mb-6 grid w-full  items-center gap-1.5">
           <Label htmlFor="email">Email</Label>
           <Input id="email" {...register("email")} type="email" />
-          {errors?.email && (
-            <p className="ml-1 text-sm text-red-500">{errors?.email.message}</p>
+          {errors?.email && !invalidEmail?.errors?.email && (
+            <ErrorInput message={errors?.email?.message} />
+          )}
+          {invalidEmail?.errors?.email && (
+            <ErrorInput message={invalidEmail?.errors?.email[0]} />
           )}
         </div>
         <div className="mb-6 grid w-full  items-center gap-1.5">
           <Label htmlFor="password">Password</Label>
           <Input id="password" {...register("password")} type="password" />
           {errors?.password && (
-            <p className="ml-1 text-sm text-red-500">
-              {errors?.password.message}
-            </p>
+            <ErrorInput message={errors?.password.message} />
+          )}
+          {invalidPassword?.errors?.password && (
+            <ErrorInput message={invalidPassword?.errors?.password[0]} />
           )}
         </div>
         <div className="mt-8 text-right">
@@ -58,7 +96,6 @@ export default function SignIn() {
           <p className="mt-8 text-center text-sm font-light">
             {`Don't have an account yet?`}
             <span className="ml-2 font-semibold underline underline-offset-2">
-              {" "}
               Sign Up
             </span>
           </p>

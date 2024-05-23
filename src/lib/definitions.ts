@@ -30,7 +30,10 @@ export type SignUpResult = {
 
 export const SignInFormSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email." }).trim(),
-  password: z.string().min(6, { message: "Invalid email." }).trim(),
+  password: z
+    .string()
+    .min(6, { message: "Please enter a valid password" })
+    .trim(),
 });
 
 export type SignInInputs = {
