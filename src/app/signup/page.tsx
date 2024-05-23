@@ -1,12 +1,18 @@
 "use client";
 import { signup } from "@/app/actions/auth";
+import ErrorInput from "@/components/errorInput";
 import { Button } from "@/components/ui/button";
 import { CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SignUpFormSchema, SignUpInputs } from "@/lib/definitions";
+import {
+  SignUpFormSchema,
+  SignUpInputs,
+  SignUpResult,
+} from "@/lib/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function SignUpForm() {
@@ -18,12 +24,23 @@ export default function SignUpForm() {
     resolver: zodResolver(SignUpFormSchema),
   });
 
-  const onSubmit: SubmitHandler<SignUpInputs> = (data) => {
+  const [ifUserExist, setIfUserExist] = useState<SignUpResult>({
+    errors: { email: undefined },
+  });
+
+  const onSubmit: SubmitHandler<SignUpInputs> = async (data) => {
     try {
-      signup(data);
-      return;
+      const ifUserExist = await signup(data);
+      if (
+        ifUserExist?.errors?.email &&
+        ifUserExist?.errors?.email[0] === "User already exist"
+      ) {
+        setIfUserExist({ errors: { email: ifUserExist?.errors?.email } });
+      } else {
+        setIfUserExist({ errors: undefined });
+      }
     } catch (error) {
-      throw new Error("Error");
+      console.error("Signup error:", error);
     }
   };
 
@@ -46,17 +63,16 @@ export default function SignUpForm() {
         <div className="mb-6 grid w-full  items-center gap-1.5">
           <Label htmlFor="email">Email</Label>
           <Input id="email" {...register("email")} type="email" />
-          {errors?.email && (
-            <p className="ml-1 text-sm text-red-500">{errors?.email.message}</p>
+          {errors?.email && <ErrorInput message={errors?.email?.message} />}
+          {ifUserExist?.errors?.email && (
+            <ErrorInput message={ifUserExist.errors?.email[0]} />
           )}
         </div>
         <div className="mb-6 grid w-full  items-center gap-1.5">
           <Label htmlFor="password">Password</Label>
           <Input id="password" {...register("password")} type="password" />
           {errors?.password && (
-            <p className="ml-1 text-sm text-red-500">
-              {errors?.password.message}
-            </p>
+            <ErrorInput message={errors?.password.message} />
           )}
         </div>
         <div className="mt-8 text-right">
@@ -66,7 +82,6 @@ export default function SignUpForm() {
           <p className="mt-8 text-center text-sm font-light">
             {`Already have an account?`}
             <span className="ml-2 font-semibold underline underline-offset-2">
-              {" "}
               Sign In
             </span>
           </p>
