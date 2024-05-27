@@ -8,7 +8,7 @@ https://auth-nextjs-git-main-andresfernandez89s-projects.vercel.app/
 
 ## Tech Stack
 
-next js, typescript, tailwind, shadcn, prisma, bcryptjs, jose, zod, react-hook-form .
+next js, typescript, tailwind, shadcn, prisma, bcryptjs, jose, zod, react-hook-form ,next-auth .
 
 ## Run Locally
 
@@ -40,9 +40,30 @@ Start the server
 To run this project, you will need to add the following environment variables to your **`.env`** file
 
 `ROOT_URL=http://localhost:3000`
-`POSTGRES_PRISMA_URL=`
-`POSTGRES_URL_NON_POOLING=`
+
 `JWT_SECRET=secretKeyNextJs`
+
+`AUTH_SECRET=`
+
+`AUTH_GOOGLE_ID=`
+
+`AUTH_GOOGLE_SECRET=`
+
+`POSTGRES_URL=`
+
+`POSTGRES_PRISMA_URL=`
+
+`POSTGRES_URL_NO_SSL=`
+
+`POSTGRES_URL_NON_POOLING=`
+
+`POSTGRES_USER=`
+
+`POSTGRES_HOST=`
+
+`POSTGRES_PASSWORD=`
+
+`POSTGRES_DATABASE=`
 
 ## 🔗 Links
 

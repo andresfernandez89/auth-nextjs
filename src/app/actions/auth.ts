@@ -1,4 +1,5 @@
 "use server";
+import { signIn } from "@/auth";
 import {
   SignInFormSchema,
   SignInInputs,
@@ -10,6 +11,10 @@ import {
 import { setSession } from "@/lib/lib";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+
+export async function handleSignInGoogle() {
+  await signIn("google", { redirectTo: "/dashboard" });
+}
 
 export async function signup(formData: SignUpInputs): Promise<SignUpResult> {
   const validatedFields = SignUpFormSchema.safeParse({
