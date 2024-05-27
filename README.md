@@ -8,7 +8,7 @@ https://auth-nextjs-git-main-andresfernandez89s-projects.vercel.app/
 
 ## Tech Stack
 
-next js, typescript, tailwind, shadcn, prisma, bcryptjs, jose, zod, react-hook-form ,next-auth .
+next js, typescript, tailwind, shadcn, prisma, bcryptjs, jose, zod, react-hook-form ,next-auth, vercel.
 
 ## Run Locally
 
@@ -42,6 +42,8 @@ To run this project, you will need to add the following environment variables to
 `ROOT_URL=http://localhost:3000`
 
 `JWT_SECRET=secretKeyNextJs`
+
+`AUTH_TRUST_HOST=http://localhost:3000`
 
 `AUTH_SECRET=`
 
