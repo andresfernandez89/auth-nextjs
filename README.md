@@ -6,6 +6,8 @@ Website with user authentication, registration, login, and logout. Data validati
 
 https://auth-nextjs-git-main-andresfernandez89s-projects.vercel.app/
 
+![GIF demo](https://drive.google.com/uc?export=view&id=1zXIXPkMSNqWhBtZF9_UN3S64dGhTVnOp)
+
 ## Tech Stack
 
 next js, typescript, tailwind, shadcn, prisma, bcryptjs, jose, zod, react-hook-form ,next-auth, vercel.
@@ -14,14 +16,15 @@ next js, typescript, tailwind, shadcn, prisma, bcryptjs, jose, zod, react-hook-f
 
 Clone the project
 
-````bash
+```bash
   git clone https://github.com/andresfernandez89/auth-nextjs.git
+```
 
 Go to the project directory
 
 ```bash
   cd auth-nextjs
-````
+```
 
 Install dependencies
 
@@ -37,7 +40,7 @@ Start the server
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your **`.env`** file
+To run this project, you will need to add the following environment variables to your **`.env`** file:
 
 `ROOT_URL=http://localhost:3000`
 
