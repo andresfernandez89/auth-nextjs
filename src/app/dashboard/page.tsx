@@ -10,6 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getCookies } from "@/lib/lib";
+import { signOut } from "next-auth/react";
 import { logout } from "../actions/auth";
 
 interface Invoice {
@@ -63,8 +65,14 @@ const invoices: Invoice[] = [
     paymentMethod: "Credit Card",
   },
 ];
-const handleClick = () => {
+const handleClick = async () => {
+  const session = await getCookies();
+  console.log(session);
   try {
+    if (session === "logoutGoogle") {
+      signOut();
+      return;
+    }
     logout();
   } catch (error) {
     throw new Error("Errores");

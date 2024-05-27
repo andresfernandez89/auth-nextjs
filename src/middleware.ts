@@ -1,6 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { decrypt } from "./lib/lib";
+export { auth as middlewareNextAuth } from "@/auth";
 
 export async function middleware(request: NextRequest) {
   const cookie = await decrypt();
