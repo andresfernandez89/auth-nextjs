@@ -4,7 +4,7 @@ Website with user authentication, registration, login, and logout. Data validati
 
 ## Demo
 
-https://auth-nextjs-git-main-andresfernandez89s-projects.vercel.app/
+https://auth-nextjs-liart-eight.vercel.app
 
 ![GIF demo](https://drive.google.com/uc?export=view&id=1zXIXPkMSNqWhBtZF9_UN3S64dGhTVnOp)
 
