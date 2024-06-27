@@ -42,33 +42,33 @@ Start the server
 
 To run this project, you will need to add the following environment variables to your **`.env`** file:
 
-`ROOT_URL=http://localhost:3000`
+**ROOT_URL**: The base URL of your application.
 
-`JWT_SECRET=secretKeyNextJs`
+**JWT_SECRET**: Secret key for signing JWTs.
 
-`AUTH_TRUST_HOST=http://localhost:3000`
+**AUTH_TRUST_HOST**: Trusted host for authentication.
 
-`AUTH_SECRET=`
+**AUTH_SECRET**: Secret key for encrypting auth data.
 
-`AUTH_GOOGLE_ID=`
+**AUTH_GOOGLE_ID**: Google OAuth client ID.
 
-`AUTH_GOOGLE_SECRET=`
+**AUTH_GOOGLE_SECRET**: Google OAuth client secret.
 
-`POSTGRES_URL=`
+**POSTGRES_URL**: Connection string for PostgreSQL with SSL.
 
-`POSTGRES_PRISMA_URL=`
+**POSTGRES_PRISMA_URL**: Connection string for PostgreSQL used by Prisma.
 
-`POSTGRES_URL_NO_SSL=`
+**POSTGRES_URL_NO_SSL**: Connection string for PostgreSQL without SSL.
 
-`POSTGRES_URL_NON_POOLING=`
+**POSTGRES_URL_NON_POOLING**: Connection string for PostgreSQL without pooling.
 
-`POSTGRES_USER=`
+**POSTGRES_USER**: PostgreSQL database username.
 
-`POSTGRES_HOST=`
+**POSTGRES_HOST**: PostgreSQL database host address.
 
-`POSTGRES_PASSWORD=`
+**POSTGRES_PASSWORD**: PostgreSQL database password.
 
-`POSTGRES_DATABASE=`
+**POSTGRES_DATABASE**: PostgreSQL database name.
 
 ## 🔗 Links
 
